@@ -1,7 +1,7 @@
 
 var im;
 function preload() {
-  im = loadImage('https://raw.githubusercontent.com/arduino/CTC-Processing/master/en/_02_PostIt_Clock/Post_it_Clock_Step_01/data/photo.jpg');
+  im = loadImage('photo.jpg');
 }
 function setup() {
   createCanvas(400, 400);
