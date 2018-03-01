@@ -10,32 +10,27 @@ var imFile = ["https://raw.githubusercontent.com/arduino/CTC-Processing/master/e
 "https://raw.githubusercontent.com/arduino/CTC-Processing/master/en/_02_PostIt_Clock/Post_it_Clock_Step_06/data/8.jpg",
 "https://raw.githubusercontent.com/arduino/CTC-Processing/master/en/_02_PostIt_Clock/Post_it_Clock_Step_06/data/9.jpg"]; // Declare an array to contain 2 images
 
+  var h;             // Take the hour from the computer and store it into a variable
+  var h_dec;    // Get the most significant digit
+  var h_uni;
+
 function preload() {
 
 	for ( i = 0; i < 10; i = i + 1) {
     im[i] = loadImage(imFile[i]);  
 }
 
-/*im[0] = loadImage(imFile[0]);  
-im[1] = loadImage(imFile[1]);
-im[2] = loadImage(imFile[3]);
-im[3] = loadImage(imFile[3]);
-im[4] = loadImage(imFile[4]);
-im[5] = loadImage(imFile[5]);
-im[6] = loadImage(imFile[6]);
-im[7] = loadImage(imFile[7]);
-im[8] = loadImage(imFile[8]);*/
-
 }
-
 function setup() {
+  createCanvas(140, 95);  // 2 digits of 70x95 pixels
 
-  createCanvas(700, 95);  // 10 images of 70 pixels wide and 95 pixels high   
- 
 }
 
 function draw() {
-  for ( i = 0; i < 10; i = i + 1) {
-    image(im[i], 70 * i, 0);  // Show the images in sequence
-  }
+  h = hour();             // Take the hour from the computer and store it into a variable
+  h_dec = int(h / 10);    // Get the most significant digit
+  h_uni = h - h_dec * 10; // Get the least significant digit
+  
+  image(im[h_dec], 0, 0);     // Show the most significant digit
+  image(im[h_uni], 70, 0);    // Show the least significant digit
 }
