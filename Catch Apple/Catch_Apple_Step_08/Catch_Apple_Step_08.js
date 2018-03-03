@@ -2,7 +2,9 @@ var nX = 0;
 var nY = 0;
 var aY = 0;
 var aX = 15;
-
+var aV = 0;     // Apple's initial speed is zero
+var aA = 0.05;  // Apple's intial accerlation (0.98 would be too much)
+ 
 function setup() { 
   createCanvas(400, 400);
   background(220);
@@ -11,10 +13,12 @@ function setup() {
 
 function draw() { 
   background(220);
-  aY = aY + 1;  // Increase apple's coordinate
+  aV = aV + aA;  // EstiaAte the speed according to the acceleration
+  aY = aY + aV;  // EstiaAte the position according to the speed
   if (aY > height) {
     aY = 15; 
     aX = int(random(width - 20));
+    aV = 0;  // Apples start falling at zero speed 
     }
 
  fill(255);

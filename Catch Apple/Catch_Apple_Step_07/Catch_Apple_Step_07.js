@@ -2,6 +2,7 @@ var nX = 0;
 var nY = 0;
 var aY = 0;
 var aX = 15;
+var aV = 3;  // Apple's falling speed
 
 function setup() { 
   createCanvas(400, 400);
@@ -11,7 +12,7 @@ function setup() {
 
 function draw() { 
   background(220);
-  aY = aY + 1;  // Increase apple's coordinate
+  aY = aY + aV;  // Increase apple's coordinate
   if (aY > height) {
     aY = 15; 
     aX = int(random(width - 20));
