@@ -6,11 +6,16 @@ var aV = 0;    // Y speed, apples
 var aA = 0.05; // Y acceleration, apples
 var p = 0;       // Points
 var pCount;  // Check whether to count points or not
- 
+var t = 0;      // Store the time 
+var timer;
+
+
 function setup() { 
   createCanvas(400, 400);
   background(220);
   nY = height - 25;
+  t = millis();  // Initialize the time counter
+
   } 
 
 function draw() { 
@@ -42,7 +47,20 @@ function draw() {
   ellipse(aX, aY, 20, 20);  
   
   rect(nX, nY, 20, 20); 
-  // Show the points on the screen
+
+  timer = (millis() - t) / 1000;  // Count how much time has passed in seconds
+  timer = timer.toFixed(2);
+  // GAME OVER
+  if (timer >= 30) {  // If time reaches 30 seconds, end the game
+    noLoop();
+  }
+
+  // Show the time on the screen
+  fill(0);
+
+  
+  text("Time: " + (30.00 - timer), 10, 20);
+  
   fill(0);  
   text("Hits: " + p, 3 * width / 4, 20); // Text to the right on the screen
 
